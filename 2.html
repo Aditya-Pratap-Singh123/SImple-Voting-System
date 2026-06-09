@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting Machine</title>
+  <style>
+    .con{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .but{
+      height: 100px;
+      width: 164px;
+      
+
+    }
+    #BJp{
+      background: url(BJP.jpg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      color: transparent;
+  
+
+      
+    }
+       #congr{
+      background: url(congress.jpg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      color: transparent;
+  
+
+      
+    }
+
+       #ap{
+      background: url(aap.jpg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      color: transparent;
+  
+
+      
+    }
+    #dis{
+      height: 30px;
+      width: 400px;
+      border: none;
+      color: black;
+      font-size: 20px;
+      background-color: antiuewhite;
+outline: none;
+margin-left: 50px;
+    }
+
+    #disp{
+      height: 30px;
+      width: 400px;
+      border: none;
+      color: black;
+      font-size: 20px;
+      background-color: antiuewhite;
+outline: none;
+margin-left: 50px;
+    }
+
+.main{
+  height: 400px;
+  width: 500px;
+  border: 5px solid;
+  background: linear-gradient(purple,white);
+}
+  </style>
+</head>
+<body>
+  <div class="con">
+  <div class="main">
+    <button class="but" id="BJp" onclick="vote('bjp')">BJP</button>
+    <button class="but" id="congr" onclick="vote('congress')">Congress</button>
+    <button class="but" id="ap" onclick="vote('aap')">AAP</button>
+    <p>BJP votes:<span id="bjp">0</span></p>
+        <p>Congress votes:<span id="cong">0</span></p>
+    <p>AAP votes:<span id="Aap">0</span></p>
+    <input type="text" id="dis"><br><br>
+    <input type="text" id="disp">
+
+
+  </div>
+  </div>
+  <script>
+    let bjp=0;
+    let congress=0;
+    let aap=0;
+    let n=0;
+
+    function showWinner() {
+    let winner = "";
+
+    if (bjp > congress && bjp > aap) {
+        winner = "BJP Wins!";
+    }
+    else if (congress > bjp && congress > aap) {
+        winner = "Congress Wins!";
+    }
+    else if (aap > bjp && aap > congress) {
+        winner = "AAP Wins!";
+    }
+    else {
+        winner = "It's a Tie!";
+    }
+
+    document.getElementById("disp").value = winner;
+}
+  
+    function vote(party){
+if(n>=10)
+{
+      document.getElementById('dis').value="Voting closed! Maximum 10 votes reached.";
+      showWinner();
+
+}
+
+      if(party=='bjp')
+    {
+      bjp++;
+    document.getElementById('bjp').innerText=bjp;
+    }
+
+    
+     else if(party=='congress')
+     {
+      congress++;
+    document.getElementById('cong').innerText=congress;
+     }
+
+    
+    else if(party=='aap')
+    {
+      aap++;
+    document.getElementById('Aap').innerText=aap;
+    }
+n++;
+
+
+
+
+
+    }
+    
+  
+  </script>
+</body>
+</html>
